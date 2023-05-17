@@ -6,10 +6,12 @@ ser = serial.Serial('/dev/ttyS0', 9600)
 # Send the command to get the CO level data
 while 1:
     try:
-        time.sleep(1)
         
         #Ask the ecSense device for a ppb reading
         ser.write(b'\xFF\x01\x86\x00\x00\x00\x00\x00\x79')
+        
+        #give it a moment
+        time.sleep(1)
 
         # Wait for the response
         resp = ser.read(9)
